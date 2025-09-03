@@ -16,5 +16,5 @@ jobs:
           lfs: true
       - name: Push to hub
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_OBESITRACK }}
         run: git push -f https://meissagningue:$HS_OBESITRACK@huggingface.co/spaces/meissagningue/ObesiTrack main
