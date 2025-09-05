@@ -2,3 +2,4 @@ python-dotenv
 SQLAlchemy
 fastapi
 uvicorn
+pyjwt
