@@ -1,6 +1,46 @@
-version: "3.9"
 services:
-  web:
-    build: .
+  postgres:
+    image: postgres:latest
+    container_name: db-postgres
+    environment:
+      - 'POSTGRES_DB=obesitrack_db'
+      - 'POSTGRES_PASSWORD='
+      - 'POSTGRES_USER=postgres'
     ports:
-      - "7860:7860"
+      - '5432:5432'
+    volumes:
+      - obesitrack_data:/var/lib/postgresql/data
+    networks:
+      - obesitrack-net
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: page_admin
+    environment:
+      - 'PGADMIN_DEFAULT_EMAIL=postgres'
+      - 'PGADMIN_DEFAULT_PASSWORD='
+      - 'PGADMIN_CONFIG_SERVER_MOD=False'
+    volumes:
+      - obesitrack_data:/var/lib/postgresql/data
+    networks:
+      - obesitrack-net
+    ports:
+      - '5050:80'
+  backend-obesitrack:
+    build: ./
+    container_name: service-obesitrack
+    environment:
+      - DB_URL:postgresql+psycopg2://postgres:@localhost:5432/obesitrack_db
+
+    ports:
+      - '8000:8000'
+    networks:
+      - obesitrack-net
+    depends_on:
+      - postgres
+      - pgadmin
+
+volumes:
+  obesitrack_data:
+networks:
+  obesitrack-net:
+    driver: bridge

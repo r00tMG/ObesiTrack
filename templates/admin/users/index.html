@@ -1,0 +1,51 @@
+{% include "components/header.html" %}
+
+<div class="container mt-5 mb-5 w-75">
+    {% if request.url.path == "/web/admin/users" %}
+    {% include "components/tabs.html" %}
+    {% endif %}
+
+    {% if error_delete %}
+    <div class="alert alert-danger text-center">
+        {{ error_delete.message }}
+    </div>
+    {% endif %}
+    {% if success_delete %}
+    <div class="alert alert-success text-center">
+        {{ success_delete.message }}
+    </div>
+    {% endif %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if users %}
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.fullname }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <div class="badge bg-primary">{{ user.role.value }}</div>
+            </td>
+            <td class="d-flex">
+                <form action="/web/admin/users/{{user.id}}" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">Del</button>
+                </form>
+                <a href="/web/admin/users/{{user.id}}" class="ms-2 btn btn-sm btn-success">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% include "components/footer.html" %}

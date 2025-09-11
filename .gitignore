@@ -1,1 +1,3 @@
 .venv
+#./modelisations/datas
+./modelisations/models

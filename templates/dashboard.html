@@ -1,0 +1,197 @@
+{% include "components/header.html" %}
+{% if not_authorized %}
+<div class="alert alert-danger text-center">
+    {{ not_authorized.message }}
+</div>
+{% endif %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="text-center ">Prédiction Obésité</h1>
+        </div>
+            {% if success_add_prediction %}
+            <div class="alert alert-success text-center">
+                {{ success_add_prediction.message }}
+            </div>
+            {% endif %}
+        <div class="w-75 p-5 m-auto d-flex align-items-center ">
+            <form action="/web/users/predict" method="post">
+                <div class="row mb-3">
+                    <div class="col-md-4 form-group">
+                        <label>Genre</label>
+                        <select class="form-select" name="genre" aria-label="Default select example">
+                            <option value="" disabled selected>Male or Female.</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Age</label>
+                        <input type="number" name="age" placeholder="The person’s age in years" class="form-control">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Height</label>
+                        <input type="number" name="height" placeholder="Height in meters." class="form-control">
+                    </div>
+
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 form-group">
+                        <label>Weight</label>
+                        <input type="number" name="weight" placeholder="Weight in kilograms." class="form-control">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>family_history_with_overweight</label>
+                        <select class="form-select" name="family_history_with_overweight"
+                                aria-label="Default select example">
+                            <option value="" disabled selected>Whether the person has a family history of * being overweight (yes/no)
+                            </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>FAVC</label>
+                        <select class="form-select" name="favc" aria-label="Default select example">
+                            <option value="" disabled selected>If the person frequently consumes high-calorie foods (yes/no)</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 form-group">
+                        <label>FCVC</label>
+                        <select class="form-select" name="fcvc" aria-label="Default select example">
+                            <option value="" disabled selected>Frequency of vegetable consumption (scale from 1 to 3).</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>NCP</label>
+                        <input type="number" name="ncp" placeholder="Number of main meals per day."
+                               class="form-control">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>CAEC</label>
+                        <select class="form-select" name="caec" aria-label="Default select example">
+                            <option value="" disabled selected>Frequency of consuming food between meals (Never, Sometimes, Frequently, Always).
+                            </option>
+                            <option value="Never">Never</option>
+                            <option value="Sometimes">Sometimes</option>
+                            <option value="Frequently">Frequently</option>
+                            <option value="Always">Always</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 form-group">
+                        <label>SMOKE</label>
+                        <select class="form-select" name="smoke" aria-label="Default select example">
+                            <option value="" disabled selected>Whether the person smokes (yes/no).</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>CH2O</label>
+                        <select  class="form-select" name="ch2o" aria-label="Default select example">
+                            <option value="" disabled selected>Daily water intake (scale from 1 to 3).</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>SCC</label>
+                        <select class="form-select" name="scc" aria-label="Default select example">
+                            <option value="" disabled selected>If the person monitors their calorie intake (yes/no).</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3 form-group">
+                        <label>FAF</label>
+                        <select class="form-select" name="faf" aria-label="Default select example">
+                            <option value="" disabled selected>Physical activity frequency (scale from 0 to 3).</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>TUE</label>
+                        <select class="form-select" name="tue" aria-label="Default select example">
+                            <option value="" disabled selected>Time spent using technology (scale from 0 to 3).</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>CALC</label>
+                        <select class="form-select" name="calc" aria-label="Default select example">
+                            <option value="" disabled selected>Frequency of alcohol consumption (Never, Sometimes, Frequently, Always).
+                            </option>
+                            <option value="never">Never</option>
+                            <option value="sometimes">Sometimes</option>
+                            <option value="frequently">Frequently</option>
+                            <option value="always">Always</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>MTRANS</label>
+                        <select class="form-select" name="mtrans" aria-label="Default select example">
+                            <option value="" disabled selected>Main mode of transportation (Automobile, Bike, Motorbike, Public
+                                Transportation, Walking).
+                            </option>
+                            <option value="automobile">Automobile</option>
+                            <option value="bike">Bike</option>
+                            <option value="motorbike">Motorbike</option>
+                            <option value="public_transportation">Public Transportation</option>
+                            <option value="walking">Walking</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row  text-center">
+                    <button type="submit" class="btn btn-primary">Prédire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card mt-5">
+        <div class="card-header">
+            <h1 class="text-center">Historique</h1>
+        </div>
+        <div class="w-75 m-auto p-5">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Resultat</th>
+                        <th>Score(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if predictions %}
+                {% for p in predictions %}
+                    <tr>
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.result }}</td>
+                        <td>{{ p.score }} </td>
+                    </tr>
+                {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% include "components/footer.html" %}

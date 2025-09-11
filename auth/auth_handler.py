@@ -12,7 +12,7 @@ JWT_ALGORITHM = os.getenv("ALGORITHM")
 
 def token_response(token:str):
     return {
-        "access_tokenn":token
+        "access_token":token
     }
 
 def sign_jwt(user_id:str)->Dict[str,str]:

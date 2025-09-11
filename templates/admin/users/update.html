@@ -1,0 +1,36 @@
+{% include "components/header.html" %}
+
+{% if request.url.path == "/web/admin/users" %}
+{% include "components/tabs.html" %}
+{% endif %}
+<div class="container">
+    <div class=" d-flex justify-content-center align-items-center vh-100">
+        <div class="w-50">
+            {% if error_delete %}
+            <div class="alert alert-danger text-center">
+                {{ error_delete.message }}
+            </div>
+            {% endif %}
+            {% if success_delete %}
+            <div class="alert alert-success text-center">
+                {{ success_delete.message }}
+            </div>
+            {% endif %}
+            <h3 class="text-center mb-3">Update Role {{ user.fullname }}</h3>
+            <form action="/web/admin/update/{{user.id}}" method="post">
+                <div class="form-group mb-3 d-flex">
+                    <select class="form-select me-2" name="role" aria-label="Default select example">
+                        <option selected>{{user.role.value}}</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+                <div class="text-center">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include "components/footer.html" %}
