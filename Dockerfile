@@ -12,4 +12,4 @@ ENV HF_HOME=/app/hf_home
 
 RUN mkdir -p /app/hf_home && chmod -R 777 /app/hf_home
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
