@@ -1,0 +1,11 @@
+ Un dépôt GitHub avec :
+• code clair et structuré (API, modèles DB, schémas Pydantic, script ML, etc.),
+• un script d’entraînement générant model.pkl + fichiers associés,
+• requirements.txt, Dockerfile, docker-compose.yml,
+• un README expliquant comment lancer le projet en local et avec Docker.
+
+2. Une image Docker publique sur Docker Hub.
+
+3. Captures d’écran : Swagger /docs, pages HTML (login, register, app_obesity, admin), historique utilisateur et graphe de probabilités.
+
+4. (Bonus) Lien vers le Space Hugging Face.

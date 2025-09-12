@@ -3,3 +3,4 @@ SQLAlchemy
 fastapi
 uvicorn
 pyjwt
+pandas
