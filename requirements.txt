@@ -7,3 +7,4 @@ passlib[bcript]
 uvicorn
 pyjwt
 pandas
+joblib
