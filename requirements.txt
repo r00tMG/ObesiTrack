@@ -3,6 +3,7 @@ SQLAlchemy
 psycopg2-binary
 fastapi[all]
 #itsdangerous
+passlib[bcript]
 uvicorn
 pyjwt
 pandas
