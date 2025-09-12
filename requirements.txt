@@ -1,6 +1,7 @@
 python-dotenv
 SQLAlchemy
 fastapi
+itsdangerous
 uvicorn
 pyjwt
 pandas
