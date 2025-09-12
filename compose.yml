@@ -4,7 +4,7 @@ services:
     container_name: db-postgres
     environment:
       - 'POSTGRES_DB=obesitrack_db'
-      - 'POSTGRES_PASSWORD='
+      - 'POSTGRES_PASSWORD=postgres'
       - 'POSTGRES_USER=postgres'
     ports:
       - '5432:5432'
@@ -16,8 +16,8 @@ services:
     image: dpage/pgadmin4
     container_name: page_admin
     environment:
-      - 'PGADMIN_DEFAULT_EMAIL=postgres'
-      - 'PGADMIN_DEFAULT_PASSWORD='
+      - 'PGADMIN_DEFAULT_EMAIL=admin@gmail.com'
+      - 'PGADMIN_DEFAULT_PASSWORD=1234'
       - 'PGADMIN_CONFIG_SERVER_MOD=False'
     volumes:
       - obesitrack_data:/var/lib/postgresql/data
@@ -30,8 +30,6 @@ services:
     container_name: service-obesitrack
     env_file:
       - .env
-    environment:
-      - DB_URL:postgresql+psycopg2://postgres:@postgres:5432/obesitrack_db
     ports:
       - '7860:7860'
     networks:
