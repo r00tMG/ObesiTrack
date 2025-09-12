@@ -58,6 +58,6 @@ def get_admin_user(request:Request, user=Depends(get_current_user)):
         raise HTTPException(
             status_code=status.HTTP_303_SEE_OTHER,
             detail="Not authorized",
-            headers={"Location": "/web/dashboard"}
+            headers={"Location": "/"}
         )
     return user

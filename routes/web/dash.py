@@ -7,9 +7,9 @@ from app import models
 from app.database import get_db
 from app.dependencies_web import get_current_user
 
-router = APIRouter(prefix="/web")
+router = APIRouter()
 templates = Jinja2Templates(directory="templates")
-@router.get("/dashboard", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+@router.get("/", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
 async def dash(request:Request, db:Session=Depends(get_db)):
     id_user = request.session.get("id_user")
     predictions = db.query(models.Prediction).filter(models.Prediction.user_id == id_user).all()

@@ -55,7 +55,7 @@ async def login(request:Request, email:str=Form(...), password:str=Form(...), db
     if (email == user.email) and verify_password(password, user.password) and (user.role.value == "user"):
         request.session['token'] = sign_jwt(user.email)
         request.session['id_user'] = user.id
-        return RedirectResponse(url = "/web/dashboard", status_code=status.HTTP_303_SEE_OTHER)
+        return RedirectResponse(url = "/", status_code=status.HTTP_303_SEE_OTHER)
     elif (email == user.email) and verify_password(password, user.password) and (user.role.value == "admin"):
         request.session['token'] = sign_jwt(user.email)
         return RedirectResponse(url = "/web/admin/users", status_code=status.HTTP_303_SEE_OTHER)

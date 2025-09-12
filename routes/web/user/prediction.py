@@ -72,7 +72,7 @@ async def predict(
             "status":status.HTTP_404_NOT_FOUND,
             "message":"Veuillez réessayer votre prediction"
         }
-        return RedirectResponse("/web/dashboard", status_code=status.HTTP_303_SEE_OTHER)
+        return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER)
     new_prediction = models.Prediction(
         user_id = id_user,
         result=prediction[0],
@@ -86,4 +86,4 @@ async def predict(
         "message": "La prediction a été ajouté à votre historique"
     }
 
-    return RedirectResponse(url="/web/dashboard", status_code=status.HTTP_303_SEE_OTHER)
+    return RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
