@@ -28,11 +28,12 @@ services:
   backend-obesitrack:
     build: ./
     container_name: service-obesitrack
+    env_file:
+      - .env
     environment:
       - DB_URL:postgresql+psycopg2://postgres:@postgres:5432/obesitrack_db
-
     ports:
-      - '8000:8000'
+      - '7860:7860'
     networks:
       - obesitrack-net
     depends_on:
