@@ -1,8 +1,7 @@
 python-dotenv
 SQLAlchemy
-psycopg2-binary
-fastapi
-itsdangerous
+fastapi[all]
+#itsdangerous
 uvicorn
 pyjwt
 pandas
