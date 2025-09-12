@@ -8,3 +8,5 @@ uvicorn
 pyjwt
 pandas
 joblib
+scikit-learn
+seaborn
