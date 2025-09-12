@@ -29,7 +29,7 @@ services:
     build: ./
     container_name: service-obesitrack
     environment:
-      - DB_URL:postgresql+psycopg2://postgres:@localhost:5432/obesitrack_db
+      - DB_URL:postgresql+psycopg2://postgres:@postgres:5432/obesitrack_db
 
     ports:
       - '8000:8000'

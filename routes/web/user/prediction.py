@@ -16,7 +16,8 @@ router = APIRouter(
 )
 
 templates = Jinja2Templates(directory="templates")
-model = joblib.load("./modelisations/models/best_model.pkl")
+#model = joblib.load("./modelisations/models/best_model.pkl")
+model = ""
 #print(model)
 @router.post("/predict")
 async def predict(
