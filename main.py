@@ -24,6 +24,7 @@ app = FastAPI()
 
 
 app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY_MIDDLEWARE)
+
 # API
 app.include_router(users.router, dependencies=[Depends(get_admin_user)])
 app.include_router(auth.router, dependencies=[Depends(get_current_user)])

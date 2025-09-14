@@ -1,4 +1,5 @@
 .venv
 ./modelisations/datas
 ./modelisations/models
-#.env
+.env
+./data
