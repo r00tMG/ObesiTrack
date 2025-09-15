@@ -2,4 +2,4 @@
 ./modelisations/datas
 ./modelisations/models
 .env
-./data
+./data/obesitrack_db.sqlite3
