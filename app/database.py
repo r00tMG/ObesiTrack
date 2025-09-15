@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 load_dotenv()
 # Utiliser /data (persiste sur Hugging Face Spaces)
-DATA_DIR = "/data"
+DATA_DIR = "/tmp/data"
 os.makedirs(DATA_DIR, exist_ok=True)
 
 DB_PATH = os.path.join(DATA_DIR, "obesitrack_db.sqlite3")
